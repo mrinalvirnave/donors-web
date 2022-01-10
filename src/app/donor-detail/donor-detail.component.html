@@ -1,0 +1,116 @@
+<div *ngIf="viewMode; else editable">
+    <div *ngIf="currentDonor._id">
+      <h4>Donor</h4>
+      <div>
+        <label><strong>Name:</strong></label> {{ currentDonor.name }}
+      </div>
+      <div>
+        <label><strong>Email:</strong></label>
+        {{ currentDonor.email }}
+      </div>
+      <div>
+        <label><strong>Phone:</strong></label>
+        {{ currentDonor.phone }}
+      </div>      
+      <div>
+        <label><strong>Pledge:</strong></label>
+        {{ currentDonor.pledge}}
+      </div>
+  
+      <a
+        class="badge badge-warning"
+        routerLink="/donors/{{ currentDonor._id }}"
+      >
+        Edit
+      </a>
+    </div>
+  
+    <div *ngIf="!currentDonor">
+      <br />
+      <p>Please click on a Donor...</p>
+    </div>
+  </div>
+  
+  <ng-template #editable>
+    <div *ngIf="currentDonor._id" class="edit-form">
+      <h4>Donor</h4>
+      <form>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            [(ngModel)]="currentDonor.name"
+            name="name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="text"
+            class="form-control"
+            id="email"
+            [(ngModel)]="currentDonor.email"
+            name="email"
+          />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input
+            type="text"
+            class="form-control"
+            id="phone"
+            [(ngModel)]="currentDonor.phone"
+            name="phone"
+          />
+        </div>
+        <div class="form-group">
+          <label for="pledge">Pledge</label>
+          <input
+            type="text"
+            class="form-control"
+            id="pledge"
+            [(ngModel)]="currentDonor.pledge"
+            name="pledge"
+          />
+        </div>
+  
+
+      </form>
+  
+      <!-- <button
+        class="badge badge-primary mr-2"
+        *ngIf="currentDonor.published"
+        (click)="updatePublished(false)"
+      >
+        UnPublish
+      </button>
+      <button
+        *ngIf="!currentDonor.published"
+        class="badge badge-primary mr-2"
+        (click)="updatePublished(true)"
+      >
+        Publish
+      </button> -->
+  
+      <button class="badge badge-danger mr-2" (click)="deleteDonor()">
+        Delete
+      </button>
+  
+      <button
+        type="submit"
+        class="badge badge-success mb-2"
+        (click)="updateDonor()"
+      >
+        Update
+      </button>
+      <p>{{ message }}</p>
+    </div>
+  
+    <div *ngIf="!currentDonor._id">
+      <br />
+      <p>Cannot access this Donor...</p>
+    </div>
+  </ng-template>
+  
