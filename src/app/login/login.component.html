@@ -1,18 +1,24 @@
-<form [formGroup]="form">
-    <fieldset>
-        <legend>Login</legend>
-        <div class="form-field">
-            <label>Email:</label>
-            <input name="email" formControlName="email">
-        </div>
-        <div class="form-field">
-            <label>Password:</label>
-            <input name="password" formControlName="password" 
-                   type="password">
-        </div>
-    </fieldset>
-    <div class="form-buttons">
-        <button class="button button-primary" 
-                (click)="login()">Login</button>
+<div class="submit-form">
+    <div>
+        <form [formGroup]="form">
+            <div class="form-group">
+                <fieldset>
+                    <legend>Login</legend>
+                    <div>
+                        <label>Email:</label>
+                        <input class="form-control" name="email" formControlName="email">
+                    </div>
+                    <div>
+                        <label>Password:</label>
+                        <input class="form-control" name="password" formControlName="password" type="password">
+                    </div>
+                </fieldset>
+            </div>
+
+            <div class="form-buttons">
+                <button class="btn btn-success" (click)="login()">Login</button>
+            </div>
+
+        </form>
     </div>
-</form>
+</div>
